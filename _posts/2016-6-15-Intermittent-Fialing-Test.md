@@ -17,7 +17,7 @@ So at this point I've narrowed down to one failing test. This was not only somet
 
 It turned out that I had cross-pollinated test.  What had original started off as strict unit test with Minitest::Test morphed into model test as well.  The problem as I was soon to find out was that running these with Minitest is outside of the database transaction functionality that Rails provides.  Test relating to database manipulation should inherit from `ActiveSupport::TestCase`.  So by getting my chocolate in the peanut butter I accidently introduced a bug in my test.
 
-##Lessons Learned:##
+Lessons Learned:
 
 **Small Changes, Big Ripples:**  Sometimes a small change can have a big ripple through the testing suite.  I have a standard test configuration that I've grown comfortable using and often copy and paste from one project to another.  This allows me a certain amount of understanding and consistency in my test process, but as was evident here, straying from this led me to issues I haven't experienced before.  Short term this was a max pain scenario, but it also resulted in longer term knowledge.
 
